@@ -7,11 +7,12 @@ public class TaskManager {
         int numeroDeTareas = 0;
         int opcion = 0;
 
-        while (opcion != 3) {
+        while (opcion != 4) {
             System.out.println("\n--- Menú ---");
             System.out.println("1. Ver tareas");
             System.out.println("2. Añadir tarea");
-            System.out.println("3. Salir");
+            System.out.println("3. Completar tarea");
+            System.out.println("4. Salir");
             System.out.print("Elige una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar el salto de línea
@@ -31,6 +32,16 @@ public class TaskManager {
                 numeroDeTareas++;
                 System.out.println("Tarea añadida.");
             } else if (opcion == 3) {
+                System.out.print("Número de la tarea a completar: ");
+                int indice = scanner.nextInt() - 1;
+                scanner.nextLine();
+                if (indice >= 0 && indice < numeroDeTareas) {
+                    tareas[indice] = tareas[indice] + " (Completada)";
+                    System.out.println("Tarea completada.");
+                } else {
+                    System.out.println("Número incorrecto.");
+                }
+            } else if (opcion == 4) {
                 System.out.println("Adiós.");
             } else {
                 System.out.println("Opción incorrecta.");
